@@ -3,7 +3,7 @@ import DNSHeader, { OPcode, ResponseCode, TDNSHeader } from "./DNS_msg/header";
 
 const defaultHeaders:TDNSHeader ={
     id:1234,
-    qr:1,
+    qr:1<<15,
     opcode:OPcode.StandardQuery,
     aa:0,
     tc:0,
