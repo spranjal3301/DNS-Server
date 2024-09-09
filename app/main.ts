@@ -40,3 +40,8 @@ udpSocket.on("message", (data: Buffer, remoteAddr: dgram.RemoteInfo) => {
         console.log(`Error sending data: ${e}`);
     }
 });
+
+//!Test
+//-echo "Your Message" | nc -u 127.0.0.1 2053  
+//-dig @127.0.0.1 -p 2053 codecrafters.io 
+//-dig @127.0.0.1 -p 2053 +noedns codecrafters.io.
