@@ -1,35 +1,55 @@
 [![progress-banner](https://backend.codecrafters.io/progress/dns-server/6efce53c-5022-4a1b-90bc-b80604212902)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
 
-This is a starting point for TypeScript solutions to the
-["Build Your Own DNS server" Challenge](https://github.com/spranjal3301).
+# Custom DNS Server Project
 
-In this challenge, you'll build a DNS server that's capable of parsing and
-creating DNS packets, responding to DNS queries, handling various record types
-and doing recursive resolve. Along the way we'll learn about the DNS protocol,
-DNS packet format, root servers, authoritative servers, forwarding servers,
-various record types (A, AAAA, CNAME, etc) and more.
+This project implements a custom DNS server in multiple stages, gradually building up functionality from a basic UDP server to a full-fledged forwarding DNS server.
 
+## Project Stages
 
+### Stage 1: Setup a UDP Server
+In this initial stage, we set up a basic UDP server that can receive and send packets. This forms the foundation for our DNS server, as DNS typically uses UDP for communication.
 
-# Passing the first stage
+### Stage 2: Write Header Section
+We implement the header section of the DNS packet. The header contains important metadata about the DNS query or response.
 
-The entry point for your `your_program.sh` implementation is in `app/main.ts`.
-Study and uncomment the relevant code, and push your changes to pass the first
-stage:
+For more detailed information about the DNS packet format, you can refer to:
+- [Wikipedia: Domain Name System](https://en.wikipedia.org/wiki/Domain_Name_System)
+- [RFC 1035](https://tools.ietf.org/html/rfc1035)
+- [DNS Packet Format Tutorial](https://www2.cs.duke.edu/courses/fall16/compsci356/DNS/DNS-primer.pdf)
 
+### Stage 3: Write Question Section
+In this stage, we implement the question section of the DNS packet. This section contains the query name, type, and class.
+
+### Stage 4: Write Answer Section
+Here, we implement the answer section of the DNS packet. This section contains the resource records that respond to the query in the question section.
+
+### Stage 5: Parse Header Section
+We develop functionality to parse the header section of incoming DNS packets, extracting relevant information for processing.
+
+### Stage 6: Parse Question Section
+This stage involves parsing the question section of incoming DNS packets to understand the nature of the DNS query.
+
+### Stage 7: Parse Compressed Packet
+DNS uses a compression scheme to reduce packet size. In this stage, we implement functionality to parse compressed DNS packets.
+
+### Stage 8: Implement a Forwarding DNS Server
+In the final stage, we implement a forwarding DNS server. This type of DNS server doesn't resolve queries itself but forwards them to another DNS server for resolution. It acts as an intermediary between the client and the authoritative DNS server.
+
+## Getting Started
+
+1. Clone the repository:
 ```sh
-git commit -am "pass 1st stage" # any msg
-git push origin master
+git clone https://github.com/yourusername/dns-server.git
+cd dns-server
 ```
 
-Time to move on to the next stage!
 
-# Stage 2 & beyond
+2. Install dependencies:
+```sh
+bun install
+```
 
-Note: This section is for stages 2 and beyond.
-
-1. Ensure you have `bun (1.1.6)` installed locally
-1. Run `./your_program.sh` to run your program, which is implemented in
-   `app/main.ts`.
-1. Commit your changes and run `git push origin master` to submit your solution
-   to CodeCrafters. Test output will be streamed to your terminal.
+3. Run the DNS server:
+```sh
+bun dev
+```
