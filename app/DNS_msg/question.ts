@@ -1,4 +1,4 @@
-export enum DNSQuestionType {
+export enum DNSType {
   A = 1,
   NS = 2,
   MD = 3,
@@ -16,7 +16,7 @@ export enum DNSQuestionType {
   MX = 15,
   TXT = 16,
 }
-export enum DNSQuestionClass {
+export enum DNSClass {
   IN = 1,
   CS = 2,
   CH = 3,
@@ -24,8 +24,8 @@ export enum DNSQuestionClass {
 }
 export interface TDNSQuestion {
   name: string;
-  type: DNSQuestionType;
-  Qclass: DNSQuestionClass;
+  type: DNSType;
+  Qclass: DNSClass;
 }
 
 class DNSQuestion {

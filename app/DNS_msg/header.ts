@@ -1,5 +1,7 @@
 export enum OPcode {
   StandardQuery = 0,
+  IQUERY=1,
+  STATUS=2
 }
 export enum ResponseCode {
   NoError = 0,
@@ -9,10 +11,11 @@ export enum ResponseCode {
   NotImplemented = 4,
   Refused = 5,
 }
+export type Bit = 0 | 1;
 
 export interface TDNSHeader {
   id: number;
-  qr: number;
+  qr: Bit;
   opcode: OPcode;
   aa: number;
   tc: number;
